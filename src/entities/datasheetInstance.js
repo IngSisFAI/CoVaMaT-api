@@ -60,7 +60,7 @@ export const createDatasheetInstance = async (inputDatasheet) => {
 }
 
 export const addVariationsToInstance = async (idDatasheet, variations) => {
-  console.log('la entrada es: ', idDatasheet, variations)
+  //console.log('la entrada es: ', idDatasheet, variations)
   await client.connect();
   //get datasheet
   const datasheet = await client.db("covamatDB").collection("datasheetInstance")

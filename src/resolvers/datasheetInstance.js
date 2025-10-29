@@ -16,9 +16,9 @@ const resolvers = {
     createDatasheetInstance(_, { datasheetInstance }) {
       return createDatasheetInstance(datasheetInstance);
     },
-    addVariationsToInstance(_, { idDatasheetInstance, variations }) {
-      console.log("resolver datasheet instance")
-      return addVariationsToInstance(idDatasheetInstance, variations);
+    addVariationsToInstance(_, { datasheetInstanceId, variations }) {
+      //console.log("resolver datasheet instance")
+      return addVariationsToInstance(datasheetInstanceId, variations);
     },
   }
 };

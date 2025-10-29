@@ -32,10 +32,15 @@ const typeDefs = gql`
     getCases: [Case]
     getCasesByDomain(domain: InputDomain): [Case]
     getCasesSimilarToReuseCase(reuseCase: ReuseCase): [Case]
+    getIsDatasheetInstanceInCase(idDatasheetInstanceArray: [ID], inputDatasheetInstance: InputDatasheetInstance): Boolean
+    getIsDatasheetInstanceDataInCase(idDatasheetInstanceArray: [ID], inputDatasheetInstance: InputDatasheetInstance): ID
+    getDatasheetsInstancesByCase(idCase: ID): [DatasheetInstance]
   }
   type Mutation {
     createCase(inputCase: InputCase):ID
-    addVariations(idCase: ID, variations: [ID]): Boolean
+    addDatasheetInstancesToCase(idCase: ID, variations: [ID]): Boolean
+    addVariationToCase(idCase: ID, datasheetInstance: InputDatasheetInstance): Boolean
+    createReuseCase(inputCase: InputCase, inputDatasheetInstance: [InputDatasheetInstance]): ID
   }
 `;
 export default typeDefs;

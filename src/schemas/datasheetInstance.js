@@ -26,7 +26,7 @@ const typeDefs = gql`
 
     type Mutation {
         createDatasheetInstance(datasheetInstance: InputDatasheetInstance): ID
-        addVariationsToInstance(idDatasheetInstance: ID, variations: [InputVariation]): Boolean
+        addVariationsToInstance(datasheetInstanceId: ID, variations: [InputVariation]): Boolean
     }
 
 

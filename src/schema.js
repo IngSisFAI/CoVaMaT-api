@@ -7,6 +7,7 @@ import caseSchema from './schemas/case.js';
 import domainSchema from './schemas/domain.js';
 import variationPointSchema from './schemas/variationPoint.js';
 import varietyTypeSchema from './schemas/varietyType.js';
+import user from './schemas/user.js';
 
 const typeDefs = gql`
   ${domainSchema}
@@ -16,6 +17,7 @@ const typeDefs = gql`
   ${caseSchema}
   ${datasheetInstanceSchema}
   ${datasheetSchema}
+  ${user}
 `;
 
 

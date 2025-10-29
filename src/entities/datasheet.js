@@ -120,7 +120,8 @@ export const getVariationPointsByVarietyTypeAndDomain = async (varietyType, doma
   const result = client.db("covamatDB").collection("datasheet")
     .find({
       domain: { name: domain.name },
-      varietyType: { name: varietyType.name } })
+      varietyType: { name: varietyType.name }
+    })
   let variationPoints = [];
   while (await result.hasNext()) {
     const document = await result.next()
@@ -159,7 +160,7 @@ export const getVariationsByDomainVTVP = async (domain, varietyType, variationPo
       variationPoint: { name: variationPoint.name }
     })
   let variations = [];
-  if(result){
+  if (result) {
     const document = await result.next()
     variations = document.variations
     //console.log('asi es document: ', document)
@@ -216,13 +217,25 @@ export const addVariations = async (idDatasheet, variations) => {
     .findOne({ "_id": new ObjectId(idDatasheet) });
   //add variations
   let dsVariations = datasheet.variations || [];
-  variations.forEach((variation) => {
-    dsVariations.push(variation);
+
+  // validacion de si la variedad ya estaba en la datasheet 
+  let isVariationInputInDatasheet = false
+
+  variations.forEach((variation) => { // por cada variacion de entrada
+    dsVariations.forEach((datasheetVariation) => { // por cada variacion de la datasheet
+      // si la variacion ya se encuentra en la datasheet pongo en true la bandera
+      if (datasheetVariation.name === variation.name) {
+        isVariationInputInDatasheet = true;
+      }
+    })
+    if (!isVariationInputInDatasheet) {
+      dsVariations.push(variation);
+    }
   })
   //update datasheet
   //await client.db("covamatDB").collection("datasheet").updateOne({ "_id": new ObjectId(idDatasheet) }, { $set: { "variations": dsVariations } });
   const result = await client.db("covamatDB").collection("datasheet").updateOne({ "_id": new ObjectId(idDatasheet) }, { $set: { "variations": dsVariations } });
-  
+
   //console.log('El resultado es: ', result);
 
   //retrieve updated datasheet

@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
   type Mutation {
     createDatasheet(datasheet: InputDatasheet):ID
-    addVariations(idDatasheet: ID, variations: [Variation]): Boolean
+    addVariations(idDatasheet: ID, variations: [InputVariation]): Boolean
   }
 `;
 export default typeDefs;
