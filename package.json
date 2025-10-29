@@ -2,15 +2,17 @@
 
   "keywords": [],
 
-  "author": "LiamOsycka",
+  "author": "IngSoftFAI",
 
   "type": "module",
+
+  "main": "index.js",
 
   "repository": {
 
     "type": "git",
 
-    "url": "https://github.com/liamosycka/CoVaMaT"
+    "url": "https://github.com/IngSisFAI/CoVaMaT"
 
   },
 
@@ -18,7 +20,7 @@
 
     "test": "echo \"Error: no test specified\" && exit 1",
 
-    "start": "nodemon src/index.js"
+    "start": "nodemon index.js"
 
   },
 
@@ -32,9 +34,13 @@
 
     "mongodb": "^5.0.1",
 
-    "mongoose": "^7.0.3",
+    "mongoose": "^7.0.3"
 
-    "nodemon": "^2.0.20"
+  },
+
+  "devDependencies": {
+
+    "nodemon": "^3.1.10"
 
   }
 
